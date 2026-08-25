@@ -11,9 +11,6 @@ reconstructed trajectories into one synchronized multivariate scenario. The
 repository also provides five jointly trained baselines and a downstream FICA
 distributionally robust dispatch evaluation.
 
-This is a code and reproducibility repository. Manuscript source files,
-submission layouts, and article PDFs are intentionally not distributed here.
-
 ## Highlights
 
 - Joint generation of complete `24 hours × K sites` trajectories.

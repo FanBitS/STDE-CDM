@@ -13,5 +13,5 @@ For code contributions:
 4. Document any new dependency, command-line option, or result schema.
 5. Open a pull request describing the scientific and software impact.
 
-Do not commit Gurobi license files, credentials, private datasets, intermediate
-training outputs, or manuscript material.
+Do not commit Gurobi license files, credentials, private datasets, or
+intermediate training outputs.

@@ -1,9 +1,7 @@
 # STDE-CDM release manifest
 
 This manifest defines the self-contained academic code release. All maintained
-entry points resolve paths from the repository root. Manuscript sources,
-article PDFs, submission templates, writing notes, and reference-paper files
-are intentionally excluded.
+entry points resolve paths from the repository root.
 
 ## Included components
 
@@ -84,8 +82,6 @@ Detailed evidence is retained in `docs/SCRIPT_VERIFICATION.md`.
 - Intermediate checkpoints, optimizer states, caches, and exploratory runs.
 - Approximately 1.5 GiB of per-day FICA candidate and validation pools.
 - Gurobi binaries and license files.
-- Manuscripts, article PDFs, submission layouts, private writing notes, and
-  reference-paper collections.
 
 ## Path and integrity policy
 
