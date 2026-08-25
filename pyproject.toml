@@ -8,12 +8,6 @@ version = "1.0.0"
 description = "Spatiotemporal dual expert conditional diffusion for synchronized multisite wind scenarios"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [
-  {name = "Jiayue Sun"},
-  {name = "Guangyu Fan"},
-  {name = "Zhongyang Ming"},
-  {name = "Yu Shan"},
-]
 keywords = [
   "wind power",
   "scenario generation",

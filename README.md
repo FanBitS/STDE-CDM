@@ -179,11 +179,6 @@ TEST days. Dataset provenance and integrity information are documented in
 - Third-party origins and retained license notices are listed in
   [`THIRD_PARTY.md`](THIRD_PARTY.md).
 
-## Citation
-
-Please cite this repository using [`CITATION.cff`](CITATION.cff). The preferred
-article citation will be added after publication metadata is available.
-
 ## License status
 
 A project-wide license for the newly authored STDE-CDM code has not yet been
