@@ -1,0 +1,154 @@
+{
+  "complete": true,
+  "completed_utc": "2026-07-27T08:38:44.228188+00:00",
+  "model": "STDE-CDM",
+  "method": "Witness-200",
+  "date": "2012-07-15T01:00:00.000000000",
+  "selection": {
+    "name": "native-center constraint witnesses plus uniform core",
+    "candidate_count": 6000,
+    "candidate_seed": 40260725,
+    "witness_count": 55,
+    "core_count": 145,
+    "core_seed": 50260725,
+    "maximum_witness_budget": 100,
+    "forecast_source": "spatiotemporal expert joint forecast head",
+    "uses_observation": false,
+    "witness_diagnostics": {
+      "generation_upper": {
+        "violating_candidates": 354,
+        "active_constraints": 137,
+        "unique_witnesses": 19
+      },
+      "generation_lower": {
+        "violating_candidates": 289,
+        "active_constraints": 123,
+        "unique_witnesses": 21
+      },
+      "ramp_upper": {
+        "violating_candidates": 147,
+        "active_constraints": 34,
+        "unique_witnesses": 18
+      },
+      "ramp_lower": {
+        "violating_candidates": 122,
+        "active_constraints": 32,
+        "unique_witnesses": 17
+      },
+      "line_upper": {
+        "violating_candidates": 0,
+        "active_constraints": 0,
+        "unique_witnesses": 0
+      },
+      "line_lower": {
+        "violating_candidates": 0,
+        "active_constraints": 0,
+        "unique_witnesses": 0
+      }
+    },
+    "candidate_scenarios_violating_initial_policy": 711
+  },
+  "feasibility_tolerance_mw": 0.0001,
+  "fica": {
+    "objective": 778181.4201246736,
+    "training_JCC": 1.0,
+    "gurobi_runtime_seconds": 177.78535389900208,
+    "wall_seconds": 189.33836806699765,
+    "status": 2
+  },
+  "independent_5000_validation": {
+    "scenario_count": 5000,
+    "joint_jcc_definition": "simultaneous generation, line-flow, and ramping feasibility; power balance is reported separately as a numerical identity",
+    "joint_satisfied_count": 4973,
+    "joint_jcc": 0.9946,
+    "joint_jcc_wilson_95_interval": [
+      0.9921545307177468,
+      0.9962860585182338
+    ],
+    "generation_jcc": 0.9954,
+    "line_flow_jcc": 1.0,
+    "ramping_jcc": 0.9986,
+    "balance_jcc": 1.0,
+    "generation_violation": {
+      "mean_mw": 0.007299401929087168,
+      "p95_mw": 0.0,
+      "p99_mw": 0.0,
+      "maximum_mw": 5.429692956313019
+    },
+    "line_flow_violation": {
+      "mean_mw": 0.0,
+      "p95_mw": 0.0,
+      "p99_mw": 0.0,
+      "maximum_mw": 0.0
+    },
+    "ramping_violation": {
+      "mean_mw": 0.001221957227008017,
+      "p95_mw": 0.0,
+      "p99_mw": 0.0,
+      "maximum_mw": 2.0702740622952405
+    },
+    "balance_violation": {
+      "mean_mw": 2.6702881148730738e-05,
+      "p95_mw": 2.6702881200435513e-05,
+      "p99_mw": 2.6702881200435513e-05,
+      "maximum_mw": 2.670288131412235e-05
+    },
+    "realized_cost": {
+      "mean": 767408.4952041882,
+      "standard_deviation": 19730.17293860836,
+      "q05": 735175.1128313228,
+      "median": 767422.1470018155,
+      "q95": 799221.3817338736
+    }
+  },
+  "real_trajectory": {
+    "joint_feasible": true,
+    "generation": {
+      "feasible": true,
+      "violating_elements": 0,
+      "violating_hours": 0,
+      "max_violation_mw": 0.0,
+      "mean_positive_violation_mw": 0.0,
+      "sum_violation_mw": 0.0,
+      "p95_positive_violation_mw": 0.0,
+      "minimum_margin_mw": 1.2140382197677972
+    },
+    "line_flow": {
+      "feasible": true,
+      "violating_elements": 0,
+      "violating_hours": 0,
+      "max_violation_mw": 0.0,
+      "mean_positive_violation_mw": 0.0,
+      "sum_violation_mw": 0.0,
+      "p95_positive_violation_mw": 0.0,
+      "minimum_margin_mw": 78.6546607031772
+    },
+    "ramping": {
+      "feasible": true,
+      "violating_elements": 0,
+      "violating_hours": 0,
+      "max_violation_mw": 0.0,
+      "mean_positive_violation_mw": 0.0,
+      "sum_violation_mw": 0.0,
+      "p95_positive_violation_mw": 0.0,
+      "minimum_margin_mw": 4.824487408327705
+    },
+    "balance": {
+      "feasible": true,
+      "violating_elements": 0,
+      "violating_hours": 0,
+      "max_violation_mw": 0.0,
+      "mean_positive_violation_mw": 0.0,
+      "sum_violation_mw": 0.0,
+      "p95_positive_violation_mw": 0.0,
+      "minimum_margin_mw": 7.711181629256317e-05
+    },
+    "scheduled_cost": 778181.4201246734,
+    "realized_cost": 747583.863007756,
+    "realized_minus_scheduled_cost": -30597.55711691745,
+    "absolute_agc_energy_mwh": 1047.271430969236,
+    "maximum_agc_adjustment_mw": 12.08907649731828,
+    "maximum_absolute_total_wind_error_mw": 97.24540710449219,
+    "mean_absolute_total_wind_error_mw": 43.63631057739258
+  }
+}

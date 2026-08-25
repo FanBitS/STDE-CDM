@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "purpose": "Restart-safe downstream FICA validation reported in the STDE-CDM paper",
+  "entry_point": "scripts/run_fica_native_sthead_50day.py",
+  "single_day_worker": "scripts/run_native_center_witness_day.py",
+  "optimizer": "fica_dispatch_optimizer/solar_all_method.py::solve_PD",
+  "model_seed": 0,
+  "models": {
+    "Joint CLDM": {
+      "checkpoint": "artifacts/checkpoints/joint_cldm_seed0.pt",
+      "deterministic_forecast": "distribution expert forecast head",
+      "scenario_generator": "distribution expert residual diffusion"
+    },
+    "STDE CDM": {
+      "distribution_checkpoint": "artifacts/checkpoints/joint_cldm_seed0.pt",
+      "spatiotemporal_checkpoint": "artifacts/checkpoints/stde_spatiotemporal_seed0.pt",
+      "deterministic_forecast": "spatiotemporal expert joint forecast head",
+      "scenario_generator": "0.6 distribution expert trajectory + 0.4 spatiotemporal expert trajectory",
+      "paired_reverse_process_noise": true
+    }
+  },
+  "locked_test_days": {
+    "start": 0,
+    "stop_inclusive": 49,
+    "count": 50
+  },
+  "scenario_selection": {
+    "preliminary_policy_scenarios": 200,
+    "candidate_scenarios": 6000,
+    "selected_scenarios_for_reported_policy": 200,
+    "maximum_constraint_informative_scenarios": 100,
+    "remaining_scenarios": "uniform sample from candidates not selected as constraint informative",
+    "independent_validation_scenarios": 5000,
+    "observed_test_trajectory_used_only_for_final_backtest": true
+  },
+  "scenario_seed_rules": {
+    "preliminary": "20260725 + locked_test_day_index",
+    "independent_validation": "30260725 + locked_test_day_index",
+    "candidate": "40260725 + locked_test_day_index",
+    "uniform_remainder": "50260725 + locked_test_day_index"
+  },
+  "power_system": {
+    "network": "IEEE RTS 24",
+    "horizon_hours": 24,
+    "generators": 38,
+    "wind_farms": 5,
+    "wind_share": 0.45,
+    "load_profile": "fica_dispatch_optimizer/data/UK_norm_load_curve_highest.npy"
+  },
+  "fica": {
+    "method": "FICA",
+    "epsilon": 0.03,
+    "theta": 0.06,
+    "norm_order": 1,
+    "mip_gap": 0.001,
+    "gurobi_seed": 0,
+    "threads": 4,
+    "time_limit_seconds_per_solve": 14400,
+    "feasibility_tolerance_mw": 0.0001
+  },
+  "reported_outputs": [
+    "real joint safe days",
+    "generation safe days",
+    "ramping safe days",
+    "line-flow safe days",
+    "power-balance safe days",
+    "independent-pool joint and constraint-specific satisfaction rates",
+    "scheduled cost",
+    "realized cost",
+    "constraint violation magnitudes"
+  ],
+  "restart_policy": "Each model, day, and policy is committed independently; complete cases are skipped on restart",
+  "frozen_case_metrics": "results/fica/all_case_metrics.csv",
+  "frozen_summary": "results/fica/final_summary.json"
+}

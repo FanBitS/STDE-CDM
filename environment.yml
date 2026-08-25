@@ -1,0 +1,21 @@
+name: stde-cdm
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - networkx
+  - jupyterlab
+  - pytest
+  - pip:
+      - torch>=2.1
+      - UMNN>=1.71
+      - pandapower==3.5.4
+      - gurobipy==13.0.2
+      - -e .

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the STDE-CDM repository."
+title: "STDE-CDM: Synchronized Multisite Wind Scenario Generation"
+type: software
+authors:
+  - family-names: Sun
+    given-names: Jiayue
+  - family-names: Fan
+    given-names: Guangyu
+  - family-names: Ming
+    given-names: Zhongyang
+  - family-names: Shan
+    given-names: Yu
+repository-code: "https://github.com/FanBitS/STDE-CDM"
+version: 1.0.0
+date-released: 2026-08-25
+keywords:
+  - wind power
+  - scenario generation
+  - conditional diffusion
+  - probabilistic forecasting
+  - distributionally robust optimization

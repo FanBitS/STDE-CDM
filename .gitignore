@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Environments and editors
+.venv/
+.env
+.idea/
+.vscode/
+*.code-workspace
+
+# Runtime outputs. Frozen publishable records belong in results/.
+outputs/*
+!outputs/checkpoints/
+outputs/checkpoints/*
+!outputs/checkpoints/.gitkeep
+!outputs/logs/
+outputs/logs/*
+!outputs/logs/.gitkeep
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

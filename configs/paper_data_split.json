@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen joint five-site data protocol used by every model in the STDE-CDM paper",
+  "dataset": {
+    "path": "data/wind_data_all_zone.csv",
+    "sha256": "633e85d3a23d278c3e35c287568f07c2ff86590e3be50e22c8b169785a13bcfe",
+    "source": "GEFCom2014 wind track",
+    "zones": [1, 2, 3, 4, 5],
+    "forecast_horizon_hours": 24,
+    "nwp_features": ["U10", "V10", "U100", "V100"],
+    "target": "TARGETVAR",
+    "condition_shape_per_day": [24, 5, 4],
+    "target_shape_per_day": [24, 5]
+  },
+  "loader": "src/cldm/data.py::load_gefcom_zone_unified via src/stde_cdm/joint_data.py::load_joint",
+  "split": {
+    "random_state": 0,
+    "shuffle": true,
+    "procedure": "Select 50 locked TEST days from all 731 days, then select 50 VS days from the remaining 681 days with the same random state",
+    "learning_days": 631,
+    "validation_days": 50,
+    "locked_test_days": 50
+  },
+  "normalization": {
+    "nwp_statistics": "estimated on LS only, independently for each site",
+    "target_scaling": "model-specific LS-only scaling for WGAN-GP, VAE, and UMNN; per-unit target used directly by diffusion models",
+    "test_information_used_for_selection": false
+  }
+}

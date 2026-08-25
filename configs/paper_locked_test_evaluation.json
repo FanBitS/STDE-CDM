@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "purpose": "Frozen comparison reported in the main forecasting table and significance analysis",
+  "entry_point": "scripts/evaluate_all_models_locked_test.py",
+  "dual_expert_entry_point": "scripts/evaluate_dual_expert_locked_test.py",
+  "data_config": "configs/paper_data_split.json",
+  "training_seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "locked_test_day_indices": {
+    "start": 0,
+    "stop_inclusive": 49,
+    "count": 50
+  },
+  "joint_scenarios_per_day": 200,
+  "models": [
+    "Joint WGAN GP",
+    "Joint VAE",
+    "Joint UMNN",
+    "Joint DDPM",
+    "Joint CLDM",
+    "STDE CDM"
+  ],
+  "stde_cdm_fusion": {
+    "distribution_expert_weight": 0.6,
+    "spatiotemporal_expert_weight": 0.4,
+    "weight_selection": "validation set only; normalized composite of MAE, RMSE, CRPS, PS, ES, and VS on validation days 0 through 24 using the seed-0 expert pair",
+    "paired_reverse_process_noise": true
+  },
+  "sampling_seed_rules": {
+    "Joint VAE": "81000 + training_seed",
+    "Joint WGAN GP": "82000 + training_seed",
+    "Joint DDPM": "83000 + training_seed",
+    "Joint UMNN": "84000 + training_seed",
+    "Joint CLDM": "85000 + training_seed",
+    "STDE CDM spatiotemporal expert": "85000 + training_seed"
+  },
+  "reported_metrics": ["MAE", "RMSE", "CRPS", "PS", "ES", "VS"],
+  "metric_direction": "lower is better for every reported metric",
+  "aggregation": {
+    "unit": "training seed after averaging all 50 locked TEST days",
+    "summary": "mean and sample standard deviation across ten seeds",
+    "sample_standard_deviation_ddof": 1
+  },
+  "statistical_analysis": {
+    "reference": "Joint CLDM",
+    "alternative": "STDE CDM has a lower loss",
+    "tests": ["one-sided paired t test", "one-sided Wilcoxon signed-rank test"],
+    "bootstrap_resamples": 10000,
+    "bootstrap_confidence_level": 0.95,
+    "bootstrap_unit": "matched training seed"
+  },
+  "frozen_result": "results/metrics/paper_locked_test_10seed.json",
+  "frozen_result_builder": "scripts/build_paper_locked_test_result.py",
+  "source_results": [
+    "results/metrics/all_joint_models_locked_test_10seed.json",
+    "results/metrics/dual_expert_locked_test_weight_0p4.json"
+  ],
+  "test_used_for_model_selection": false
+}
